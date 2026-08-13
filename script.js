@@ -1,6 +1,6 @@
 // JSONS Digital Score Analysis Software
 // Set APPS_SCRIPT_URL to your deployed Google Apps Script web-app /exec URL.
-const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzr9YNxs8yULS_N-E3GHh4K5dSpVk1dcuxDXHBfI54AqSUAp9TtKrdNlsh4dapSkhxc/exec";
 const WHATSAPP_NUMBER = "918610817060";
 
 const form = document.getElementById("auditForm");
