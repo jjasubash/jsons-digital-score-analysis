@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="JSONS Digital Score Analysis Software — a quick digital presence audit for Google Business Profile and Instagram.">
+  <title>JSONS Digital Score Analysis Software</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <img src="assets/logo.png" alt="JSONS Branding Studio logo">
+      <span>JSONS DIGITAL SCORE ANALYSIS SOFTWARE</span>
+    </a>
+    <div class="secure-pill"><span class="dot"></span> Free profile check</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">DIGITAL PRESENCE AUDIT</p>
+        <h1>Find out how strong your <span>digital profile</span> really is.</h1>
+        <p class="hero-text">Upload screenshots of your Google Business Profile and Instagram. We’ll turn the visible signals into a simple score and show the biggest opportunities.</p>
+        <div class="mini-points">
+          <div><b>01</b><span>Google Business Profile</span></div>
+          <div><b>02</b><span>Instagram presence</span></div>
+          <div><b>03</b><span>100-point score</span></div>
+        </div>
+      </div>
+
+      <div class="form-card" id="auditFormCard">
+        <div class="card-head">
+          <div>
+            <p class="card-kicker">START YOUR TEST</p>
+            <h2>Get your digital score</h2>
+          </div>
+          <div class="score-orb">100<span>PTS</span></div>
+        </div>
+
+        <form id="auditForm">
+          <div class="field-grid">
+            <label>
+              <span>Name *</span>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+            </label>
+            <label>
+              <span>Contact number *</span>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+            </label>
+          </div>
+
+          <label>
+            <span>Place *</span>
+            <input id="place" name="place" type="text" autocomplete="address-level2" placeholder="City / Area" required>
+          </label>
+
+          <label>
+            <span>Email *</span>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+
+          <div class="upload-grid">
+            <label class="upload-box">
+              <input id="gmb" type="file" accept="image/png,image/jpeg,image/webp" required>
+              <span class="upload-icon">G</span>
+              <strong>Google Business Profile</strong>
+              <small>Upload screenshot</small>
+              <em class="file-name" id="gmbName">PNG, JPG or WEBP</em>
+            </label>
+            <label class="upload-box">
+              <input id="instagram" type="file" accept="image/png,image/jpeg,image/webp" required>
+              <span class="upload-icon">◎</span>
+              <strong>Instagram profile</strong>
+              <small>Upload screenshot</small>
+              <em class="file-name" id="instagramName">PNG, JPG or WEBP</em>
+            </label>
+          </div>
+
+          <label class="consent">
+            <input id="consent" type="checkbox" required>
+            <span>I agree to let JSONS Branding Studio use these details and screenshots to prepare this digital profile analysis.</span>
+          </label>
+
+          <button class="primary-btn" id="submitBtn" type="submit">
+            <span>START TEST</span><b>→</b>
+          </button>
+          <p class="privacy-note">Your result is prepared from the screenshots you provide. No passwords are requested.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="results-section hidden" id="results">
+      <div class="results-head">
+        <div>
+          <p class="eyebrow">YOUR DIGITAL SCORE</p>
+          <h2 id="resultTitle">Your profile needs improvement.</h2>
+          <p id="resultIntro">Here are the biggest visible opportunities from your submitted screenshots.</p>
+        </div>
+        <div class="big-score">
+          <strong id="overallScore">0</strong><span>/100</span>
+        </div>
+      </div>
+
+      <div class="score-grid">
+        <article class="score-card">
+          <div class="score-card-top">
+            <div><span class="platform-mark google-mark">G</span><h3>Google Business</h3></div>
+            <strong><span id="gmbScore">0</span>/50</strong>
+          </div>
+          <div class="progress"><i id="gmbProgress"></i></div>
+          <p class="score-summary" id="gmbSummary"></p>
+          <div class="gist-list" id="gmbGist"></div>
+        </article>
+
+        <article class="score-card">
+          <div class="score-card-top">
+            <div><span class="platform-mark insta-mark">◎</span><h3>Instagram</h3></div>
+            <strong><span id="instagramScore">0</span>/50</strong>
+          </div>
+          <div class="progress"><i id="instagramProgress"></i></div>
+          <p class="score-summary" id="instagramSummary"></p>
+          <div class="gist-list" id="instagramGist"></div>
+        </article>
+      </div>
+
+      <div class="cta-card">
+        <div>
+          <p class="eyebrow">NEXT STEP</p>
+          <h2>Your profile needs improvement.</h2>
+          <p>Let JSONS BRANDING STUDIO turn these gaps into a stronger digital presence.</p>
+        </div>
+        <a class="whatsapp-btn" id="whatsappBtn" href="https://wa.me/918610817060" target="_blank" rel="noopener">
+          <span>Chat with us on WhatsApp</span><b>↗</b>
+        </a>
+      </div>
+
+      <button class="reset-btn" id="resetBtn" type="button">Run another analysis</button>
+    </section>
+
+    <section class="how-it-works">
+      <div><p class="eyebrow">HOW IT WORKS</p><h2>Simple for the client. Useful for you.</h2></div>
+      <div class="steps">
+        <div><span>01</span><h3>Upload</h3><p>Client submits two profile screenshots and contact details.</p></div>
+        <div><span>02</span><h3>Analyze</h3><p>The vision model checks visible profile signals and assigns a score.</p></div>
+        <div><span>03</span><h3>Convert</h3><p>The result shows only the key gaps, keeping the deeper fixes for your consultation.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© <span id="year"></span> JSONS BRANDING STUDIO</span>
+    <span>Digital growth • Branding • Websites • Automation</span>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
