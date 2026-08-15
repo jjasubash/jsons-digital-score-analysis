@@ -1,581 +1,201 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <meta
-    name="description"
-    content="JSONS Digital Score Analysis Software — check your business name consistency across Google and Instagram."
-  >
-
-  <title>JSONS Digital Score Analysis Software</title>
-
-  <link rel="icon" href="assets/logo.png">
+  <meta name="description" content="JSONS Digital Score — a free digital presence check for businesses. See how consistently your brand appears across Google and Instagram.">
+  <meta name="theme-color" content="#f4efe7">
+  <title>JSONS Digital Score — Free Digital Presence Check</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 
-
 <body>
+  <div class="grain" aria-hidden="true"></div>
 
-<header class="topbar">
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="JSONS Branding Studio home">
+      <img src="logo.png" alt="JSONS Branding Studio logo">
+      <span class="brand-name">JSONS BRANDING STUDIO</span>
+    </a>
 
-  <a class="brand" href="#">
-    <img
-      src="assets/logo.png"
-      alt="JSONS Branding Studio logo"
-    >
+    <div class="topbar-right">
+      <span class="topbar-label">DIGITAL GROWTH PARTNER</span>
+      <div class="secure-pill"><span class="dot"></span> Free profile check</div>
+    </div>
+  </header>
 
-    <span>
-      JSONS DIGITAL SCORE ANALYSIS SOFTWARE
-    </span>
-  </a>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow hero-eyebrow"><span></span> DIGITAL PRESENCE SCORE</div>
 
-  <div class="secure-pill">
-    <span class="dot"></span>
-    Free profile check
-  </div>
+        <p class="hero-index">01 / 03</p>
 
-</header>
+        <h1>
+          Does your brand
+          <i>look credible</i>
+          online?
+        </h1>
 
+        <p class="hero-text">
+          Your customers search you online before they contact you! Check your score and see exactly where you can improve.
+        </p>
 
-<main>
-
-
-  <!-- HERO -->
-
-  <section class="hero">
-
-    <div class="hero-copy">
-
-      <p class="eyebrow">
-        DIGITAL PRESENCE CHECK
-      </p>
-
-      <h1>
-        Find out how consistent your
-        <span>business name</span> is online.
-      </h1>
-
-      <p class="hero-text">
-        Enter your business name, Google Business Profile name and Instagram
-        handle. We'll check how consistently your business is represented
-        across these platforms.
-      </p>
-
-
-      <div class="mini-points">
-
-        <div>
-          <b>01</b>
-          <span>Business name</span>
+        <div class="hero-note">
+          <span class="spark">✦</span>
+          Built for businesses
         </div>
-
-        <div>
-          <b>02</b>
-          <span>Google Business Profile</span>
-        </div>
-
-        <div>
-          <b>03</b>
-          <span>Instagram handle</span>
-        </div>
-
       </div>
 
-    </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="visual-card visual-card-main">
+          <span class="mini-label">DIGITAL SCORE</span>
+          <strong>?<span></span></strong>
+          <div class="visual-bar"><i></i></div>
+          <small>Consistency creates recognition.</small>
+        </div>
+        <div class="floating-card floating-card-top">
+          <span>GOOGLE</span><b>✓</b>
+        </div>
+        <div class="floating-card floating-card-bottom">
+          <span>INSTAGRAM</span><b>✓</b>
+        </div>
+        <div class="visual-stamp">J<br>S</div>
+      </div>
 
+      <div class="form-card" id="auditFormCard">
+        <div class="card-topline">
+          <span>FREE AUDIT</span>
+          <span>~ 60 SEC</span>
+        </div>
 
-    <!-- FORM CARD -->
+        <div class="card-head">
+          <div>
+            <p class="card-kicker">START HERE</p>
+            <h2>Check your<br><i>brand consistency.</i></h2>
+          </div>
+        </div>
 
-    <div
-      class="form-card"
-      id="auditFormCard"
-    >
+        <form id="auditForm">
+          <div class="form-grid">
+            <label>
+              <span>Your name <b>*</b></span>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+            </label>
 
-      <div class="card-head">
+            <label>
+              <span>Business name <b>*</b></span>
+              <input id="businessName" name="businessName" type="text" placeholder="Your official business name" required>
+            </label>
 
-        <div>
+            <label>
+              <span>Email <b>*</b></span>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
 
-          <p class="card-kicker">
-            START YOUR TEST
+            <label>
+              <span>WhatsApp <b>*</b></span>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required>
+            </label>
+
+            <label>
+              <span>Instagram handle <b>*</b></span>
+              <input id="instagram" name="instagram" type="text" placeholder="@yourbusiness" required>
+            </label>
+
+            <label>
+              <span>Google Business Profile <b>*</b></span>
+              <input id="googleBusiness" name="googleBusiness" type="text" placeholder="Your Google Business name" required>
+            </label>
+          </div>
+
+          <button class="primary-btn" id="submitBtn" type="submit">
+            <span>RUN MY FREE CHECK</span><b>↗</b>
+          </button>
+
+          <p class="privacy-note">
+            <span>●</span> No passwords, screenshots or account access required.
           </p>
+        </form>
+      </div>
+    </section>
 
-          <h2>
-            Check your business
-          </h2>
-
+    <section class="results-section hidden" id="results">
+      <div class="section-kicker">02 / YOUR DIGITAL SCORE</div>
+      <div class="results-head">
+        <div>
+          <h2 id="resultTitle">Your business name looks consistent.</h2>
+          <p id="resultIntro">Your business name appears consistent across the profiles you entered.</p>
         </div>
-
-
-        <div class="score-orb">
-          95<span>%+</span>
+        <div class="big-score">
+          <strong id="overallScore">0</strong><span>/100</span>
         </div>
-
       </div>
 
-
-      <form id="auditForm">
-
-
-        <label>
-
-          <span>
-            Your name *
-          </span>
-
-          <input
-            id="name"
-            name="name"
-            type="text"
-            autocomplete="name"
-            placeholder="Your name"
-            required
-          >
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Business name *
-          </span>
-
-          <input
-            id="businessName"
-            name="businessName"
-            type="text"
-            placeholder="Your official business name"
-            required
-          >
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Email *
-          </span>
-
-          <input
-            id="email"
-            name="email"
-            type="email"
-            autocomplete="email"
-            placeholder="you@example.com"
-            required
-          >
-
-        </label>
-
-
-        <label>
-
-          <span>
-            WhatsApp contact *
-          </span>
-
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            autocomplete="tel"
-            placeholder="+91 98765 43210"
-            required
-          >
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Instagram handle *
-          </span>
-
-          <input
-            id="instagram"
-            name="instagram"
-            type="text"
-            placeholder="@yourbusiness"
-            required
-          >
-
-        </label>
-
-
-        <label>
-
-          <span>
-            Google Business Profile name *
-          </span>
-
-          <input
-            id="googleBusiness"
-            name="googleBusiness"
-            type="text"
-            placeholder="Your Google Business Profile name"
-            required
-          >
-
-        </label>
-
-
-        <button
-          class="primary-btn"
-          id="submitBtn"
-          type="submit"
-        >
-
-          <span>
-            START TEST
-          </span>
-
-          <b>
-            →
-          </b>
-
-        </button>
-
-
-        <p class="privacy-note">
-          No passwords, screenshots or account access are requested.
-        </p>
-
-      </form>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- RESULTS -->
-
-  <section
-    class="results-section hidden"
-    id="results"
-  >
-
-
-    <div class="results-head">
-
-      <div>
-
-        <p class="eyebrow">
-          YOUR DIGITAL CHECK
-        </p>
-
-        <h2 id="resultTitle">
-          Your business name looks consistent.
-        </h2>
-
-        <p id="resultIntro">
-          Your business name appears consistent across the profiles you entered.
-        </p>
-
-      </div>
-
-
-      <div class="big-score">
-
-        <strong id="overallScore">
-          0
-        </strong>
-
-        <span>
-          /100
-        </span>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- RISK TAG -->
-
-    <div
-      id="riskTag"
-      class="risk-tag"
-    >
-      LOW RISK
-    </div>
-
-
-
-    <!-- SCORE CARDS -->
-
-    <div class="score-grid">
-
-
-      <article class="score-card">
-
-        <div class="score-card-top">
-
-          <div>
-
-            <span class="platform-mark google-mark">
-              G
-            </span>
-
-            <h3>
-              Business ↔ Google
-            </h3>
-
+      <div id="riskTag" class="risk-tag">LOW RISK</div>
+
+      <div class="score-grid">
+        <article class="score-card">
+          <div class="score-card-top">
+            <div><span class="platform-mark google-mark">G</span><h3>Business ↔ Google</h3></div>
+            <strong><span id="googleScore">0</span>%</strong>
           </div>
+          <div class="progress"><i id="googleProgress"></i></div>
+          <p class="score-summary" id="googleSummary"></p>
+        </article>
 
-
-          <strong>
-            <span id="googleScore">
-              0
-            </span>%
-          </strong>
-
-        </div>
-
-
-        <div class="progress">
-          <i id="googleProgress"></i>
-        </div>
-
-
-        <p
-          class="score-summary"
-          id="googleSummary"
-        ></p>
-
-      </article>
-
-
-
-      <article class="score-card">
-
-        <div class="score-card-top">
-
-          <div>
-
-            <span class="platform-mark insta-mark">
-              ◎
-            </span>
-
-            <h3>
-              Business ↔ Instagram
-            </h3>
-
+        <article class="score-card">
+          <div class="score-card-top">
+            <div><span class="platform-mark insta-mark">◎</span><h3>Business ↔ Instagram</h3></div>
+            <strong><span id="instagramScore">0</span>%</strong>
           </div>
+          <div class="progress"><i id="instagramProgress"></i></div>
+          <p class="score-summary" id="instagramSummary"></p>
+        </article>
+      </div>
 
-
-          <strong>
-            <span id="instagramScore">
-              0
-            </span>%
-          </strong>
-
+      <div class="cta-card">
+        <div>
+          <p class="eyebrow"><span></span> WHAT THIS MEANS</p>
+          <h2 id="adviceTitle">Your naming consistency is looking good.</h2>
+          <p id="adviceText">Keeping your business name recognizable across platforms makes it easier for customers to find and trust your business.</p>
         </div>
-
-
-        <div class="progress">
-          <i id="instagramProgress"></i>
-        </div>
-
-
-        <p
-          class="score-summary"
-          id="instagramSummary"
-        ></p>
-
-      </article>
-
-
-    </div>
-
-
-
-    <!-- CUSTOMER MESSAGE -->
-
-    <div class="cta-card">
-
-      <div>
-
-        <p class="eyebrow">
-          WHAT THIS MEANS
-        </p>
-
-        <h2 id="adviceTitle">
-          Your naming consistency is looking good.
-        </h2>
-
-        <p id="adviceText">
-          Keeping your business name recognizable across platforms makes it
-          easier for customers to find and trust your business.
-        </p>
-
+        <a class="whatsapp-btn" id="whatsappBtn" href="https://wa.me/918610817060" target="_blank" rel="noopener">
+          <span>Connect on whatsapp with us to Fix this issue</span><b>↗</b>
+        </a>
       </div>
 
-
-      <a
-        class="whatsapp-btn"
-        id="whatsappBtn"
-        href="https://wa.me/918610817060"
-        target="_blank"
-        rel="noopener"
-      >
-
-        <span>
-          Contact on WhatsApp to fix these issues
-        </span>
-
-        <b>
-          ↗
-        </b>
-
-      </a>
-
-    </div>
-
-
-
-    <!-- GENERAL MARKETING ADVICE -->
-
-    <div class="score-card advice-card">
-
-      <p class="eyebrow">
-        GENERAL DIGITAL MARKETING ADVICE
-      </p>
-
-      <h2>
-        Build a stronger digital presence
-      </h2>
-
-
-      <div
-        id="marketingAdvice"
-        class="gist-list"
-      ></div>
-
-    </div>
-
-
-
-    <button
-      class="reset-btn"
-      id="resetBtn"
-      type="button"
-    >
-      Run another analysis
-    </button>
-
-
-  </section>
-
-
-
-  <!-- HOW IT WORKS -->
-
-  <section class="how-it-works">
-
-    <div>
-
-      <p class="eyebrow">
-        HOW IT WORKS
-      </p>
-
-      <h2>
-        Simple for the client. Useful for you.
-      </h2>
-
-    </div>
-
-
-    <div class="steps">
-
-
-      <div>
-
-        <span>
-          01
-        </span>
-
-        <h3>
-          Enter
-        </h3>
-
-        <p>
-          Enter your business name and the names used on Google and Instagram.
-        </p>
-
+      <div class="score-card advice-card">
+        <p class="eyebrow"><span></span> DIGITAL MARKETING ADVICE FOR YOU:</p>
+        <h2>Build a stronger<br><i>digital presence.</i></h2>
+        <div id="marketingAdvice" class="gist-list"></div>
       </div>
 
+      <button class="reset-btn" id="resetBtn" type="button">← Run another analysis</button>
+    </section>
 
+    <section class="agency-banner">
+      <div class="agency-logo-box"><img src="logo.png" alt="JSONS Branding Studio logo"></div>
       <div>
-
-        <span>
-          02
-        </span>
-
-        <h3>
-          Check
-        </h3>
-
-        <p>
-          The system compares the three names for consistency.
-        </p>
-
+        <p>ONE-STOP DIGITAL GROWTH PARTNER</p>
+        <h2>Make your business<br><i>look as good as it is.</i></h2>
       </div>
+      <a href="https://wa.me/918610817060" target="_blank" rel="noopener">LET'S TALK <span>↗</span></a>
+    </section>
+  </main>
 
+  <footer>
+    <span>© <span id="year"></span> JSONS BRANDING STUDIO</span>
+    <span>Digital growth · Branding · Websites · Automation</span>
+  </footer>
 
-      <div>
-
-        <span>
-          03
-        </span>
-
-        <h3>
-          Improve
-        </h3>
-
-        <p>
-          Get simple digital marketing advice and contact JSONS for help.
-        </p>
-
-      </div>
-
-
-    </div>
-
-  </section>
-
-</main>
-
-
-
-<footer>
-
-  <span>
-    © <span id="year"></span> JSONS BRANDING STUDIO
-  </span>
-
-  <span>
-    Digital growth • Branding • Websites • Automation
-  </span>
-
-</footer>
-
-
-
-<div
-  class="toast"
-  id="toast"
-></div>
-
-
-
-<script src="script.js"></script>
-
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
 </body>
-
 </html>
