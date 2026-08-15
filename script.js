@@ -29,20 +29,59 @@ function wireUpload(inputId, nameId){
 wireUpload("gmb","gmbName");
 wireUpload("instagram","instagramName");
 
-function fileToPayload(file){
-  return new Promise((resolve,reject)=>{
-    if(!file) return reject(new Error("Missing image"));
-    const reader = new FileReader();
-    reader.onload = ()=> {
-      const result = String(reader.result);
-      resolve({
-        name:file.name,
-        mimeType:file.type || "image/jpeg",
-        data:result.split(",")[1]
-      });
+const MAX_DIMENSION = 1400; // longest side, in px
+const JPEG_QUALITY = 0.75;
+
+function compressImage(file){
+  return new Promise((resolve, reject)=>{
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = ()=>{
+      URL.revokeObjectURL(url);
+      let { width, height } = img;
+      if(width > MAX_DIMENSION || height > MAX_DIMENSION){
+        const scale = MAX_DIMENSION / Math.max(width, height);
+        width = Math.round(width * scale);
+        height = Math.round(height * scale);
+      }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        blob => blob ? resolve(blob) : reject(new Error("Image compression failed")),
+        "image/jpeg",
+        JPEG_QUALITY
+      );
     };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
+    img.onerror = ()=>{
+      URL.revokeObjectURL(url);
+      reject(new Error("Could not read image"));
+    };
+    img.src = url;
+  });
+}
+
+function fileToPayload(file){
+  return new Promise(async (resolve,reject)=>{
+    if(!file) return reject(new Error("Missing image"));
+    try{
+      const blob = await compressImage(file);
+      const reader = new FileReader();
+      reader.onload = ()=> {
+        const result = String(reader.result);
+        resolve({
+          name:file.name,
+          mimeType:"image/jpeg",
+          data:result.split(",")[1]
+        });
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    }catch(err){
+      reject(err);
+    }
   });
 }
 
@@ -125,7 +164,10 @@ form.addEventListener("submit", async (e)=>{
     showToast("Analysis complete.");
   }catch(err){
     console.error(err);
-    showToast(err.message || "Something went wrong. Please try again.");
+    const isNetworkError = err instanceof TypeError && /fetch/i.test(err.message || "");
+    showToast(isNetworkError
+      ? "Connection issue — check your signal/wifi and try again."
+      : (err.message || "Something went wrong. Please try again."));
   }finally{
     submitBtn.disabled = false;
     submitBtn.querySelector("span").textContent = "START TEST";
