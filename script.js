@@ -115,6 +115,52 @@ function showResults(data){
   results.scrollIntoView({behavior:"smooth", block:"start"});
 }
 
+function isTransientOverload(message){
+  const m = (message || "").toLowerCase();
+  return m.includes("503") || m.includes("unavailable") || m.includes("high demand") || m.includes("overloaded");
+}
+
+function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
+
+async function submitAnalysis(payload, attempt = 1){
+  const MAX_ATTEMPTS = 3;
+
+  const response = await fetch(APPS_SCRIPT_URL, {
+    method:"POST",
+    redirect:"follow",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(payload)
+  });
+
+  const raw = await response.text();
+
+  if(!response.ok){
+    console.error("Server responded with status", response.status, response.statusText, raw);
+    throw new Error(`Server error (${response.status}). Please try again in a moment.`);
+  }
+
+  let data;
+  try{ data = JSON.parse(raw); }catch{
+    console.error("Non-JSON response body:", raw);
+    throw new Error("The analysis service returned an unexpected response.");
+  }
+
+  if(!data.ok){
+    const message = data.error || "Analysis failed.";
+    if(isTransientOverload(message) && attempt < MAX_ATTEMPTS){
+      console.warn(`Transient overload (attempt ${attempt}), retrying…`, message);
+      showToast(`Servers are busy — retrying (${attempt}/${MAX_ATTEMPTS - 1})…`);
+      await sleep(attempt * 2000);
+      return submitAnalysis(payload, attempt + 1);
+    }
+    throw new Error(isTransientOverload(message)
+      ? "The AI service is very busy right now. Please try again in a minute."
+      : message);
+  }
+
+  return data;
+}
+
 form.addEventListener("submit", async (e)=>{
   e.preventDefault();
 
@@ -146,19 +192,7 @@ form.addEventListener("submit", async (e)=>{
       submittedAt: new Date().toISOString()
     };
 
-    const response = await fetch(APPS_SCRIPT_URL, {
-      method:"POST",
-      redirect:"follow",
-      headers:{"Content-Type":"text/plain;charset=utf-8"},
-      body:JSON.stringify(payload)
-    });
-
-    const raw = await response.text();
-    let data;
-    try{ data = JSON.parse(raw); }catch{
-      throw new Error("The analysis service returned an unexpected response.");
-    }
-    if(!data.ok) throw new Error(data.error || "Analysis failed.");
+    const data = await submitAnalysis(payload);
 
     showResults(data.analysis);
     showToast("Analysis complete.");
