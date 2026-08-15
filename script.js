@@ -10,7 +10,7 @@ JSONS DIGITAL SCORE ANALYSIS
 */
 
 const GOOGLE_APPS_SCRIPT_URL =
-  "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+  "https://script.google.com/macros/s/AKfycbxHnbZdu8_91rgjB3_oNogn2FKGTTuvRJ954CEz4u5Oj_iZ_nVU6qcyA8738UXLkhP7/exec";
 
 
 /*
